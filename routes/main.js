@@ -125,13 +125,13 @@ let semuaFakta = [
       instagram_story: "/share/ig/rebusan-daun-pepaya-menyembuhkan-dbd",
       tiktok: "/share/tiktok/rebusan-daun-pepaya-menyembuhkan-dbd",
       whatsapp:
-        "https://wa.me/?text=Jamu%20daun%20pepaya%20mungkin%20bantu%20naikkan%20trombot%20tapi%20tidak%20menyembuhkan%20DBD.%20Baca%20selengkapnya%20di%20FaktaSehat%20-%20/rebusan-daun-pepaya-menyembuhkan-dbd",
+        "https://wa.me/6282237745751?text=Jamu%20daun%20pepaya%20mungkin%20bantu%20naikkan%20trombot%20tapi%20tidak%20menyembuhkan%20DBD.%20Baca%20selengkapnya%20di%20FaktaSehat%20-%20/rebusan-daun-pepaya-menyembuhkan-dbd",
     },
     social_caption:
       "Jamu daun pepaya mungkin bantu naikkan trombosit, tapi tidak bisa sembuhin DBD. Tetap ke RS ya! #FaktaSehat #SaringSebelumSharing",
     faq_cta: {
       text: "Ada yang masih bingung soal DBD atau herbal lainnya?",
-      wa_link: "https://wa.me/62812xxxxxxxx",
+      wa_link: "https://wa.me/6282237745751",
     },
     meta: {
       keywords: [
@@ -268,13 +268,13 @@ let semuaFakta = [
       instagram_story: "/share/ig/sirsak-menyembuhkan-kanker",
       tiktok: "/share/tiktok/sirsak-menyembuhkan-kanker",
       whatsapp:
-        "https://wa.me/?text=HOAKS%20sirsak%20sembuhkan%20kanker.%20Bukti%20manusia%20belum%20ada%E2%80%94yang%20ada%20baru%20uji%20sel/hewan.%20Jangan%20tunda%20terapi%20dokter%20ya.%20Info%20lengkap%20di%20FaktaSehat%20-%20/sirsak-menyembuhkan-kanker",
+        "https://wa.me/6282237745751?text=HOAKS%20sirsak%20sembuhkan%20kanker.%20Bukti%20manusia%20belum%20ada%E2%80%94yang%20ada%20baru%20uji%20sel/hewan.%20Jangan%20tunda%20terapi%20dokter%20ya.%20Info%20lengkap%20di%20FaktaSehat%20-%20/sirsak-menyembuhkan-kanker",
     },
     social_caption:
       "HOAKS sirsak sembuhkan kanker. Bukti manusia belum ada—yang ada baru uji sel/hewan. Jangan tunda terapi dokter ya. #FaktaSehat #SaringSebelumSharing",
     faq_cta: {
       text: "Masih bingung soal herbal antikanker atau butuh klarifikasi resep online?",
-      wa_link: "https://wa.me/62812xxxxxxxx",
+      wa_link: "https://wa.me/6282237745751",
     },
     meta: {
       keywords: [
@@ -401,13 +401,13 @@ let semuaFakta = [
       instagram_story: "/share/ig/zymuno-menyembuhkan-kanker",
       tiktok: "/share/tiktok/zymuno-menyembuhkan-kanker",
       whatsapp:
-        "https://wa.me/?text=HOAKS%3A%20Zymuno%20menyembuhkan%20kanker%20tanpa%20kemoterapi.%0AFAKTA%3A%20Belum%20ada%20bukti%20ilmiah.%20Herbal%20bisa%20untuk%20stamina%2C%20tapi%20kanker%20tetap%20perlu%20terapi%20medis.%20%23FaktaSehat%20%23SaringSebelumSharing",
+        "https://wa.me/6282237745751?text=HOAKS%3A%20Zymuno%20menyembuhkan%20kanker%20tanpa%20kemoterapi.%0AFAKTA%3A%20Belum%20ada%20bukti%20ilmiah.%20Herbal%20bisa%20untuk%20stamina%2C%20tapi%20kanker%20tetap%20perlu%20terapi%20medis.%20%23FaktaSehat%20%23SaringSebelumSharing",
     },
     social_caption:
       "HOAKS: Zymuno menyembuhkan kanker tanpa kemoterapi. FAKTA: Belum ada bukti ilmiah. Herbal bisa untuk stamina, tapi kanker tetap perlu terapi medis. #FaktaSehat #SaringSebelumSharing",
     faq_cta: {
       text: "Masih bingung soal terapi kanker atau produk herbal?",
-      wa_link: "https://wa.me/62812xxxxxxxx",
+      wa_link: "https://wa.me/6282237745751",
     },
     meta: {
       keywords: [
@@ -537,13 +537,13 @@ let semuaFakta = [
       instagram_story: "/share/ig/air-es-membekukan-lemak",
       tiktok: "/share/tiktok/air-es-membekukan-lemak",
       whatsapp:
-        "https://wa.me/?text=Mitos%3A%20Air%20es%20bikin%20lemak%20membeku.%0AFakta%3A%20Tubuh%20kita%2037%20%C2%B0C%E2%80%94air%20dingin%20cepat%20dihangatkan.%20Lemak%20dicerna%2C%20bukan%20dibekukan.%20Minum%20air%20yang%20cukup%20jauh%20lebih%20penting.%20%23FaktaSehat",
+        "https://wa.me/6282237745751?text=Mitos%3A%20Air%20es%20bikin%20lemak%20membeku.%0AFakta%3A%20Tubuh%20kita%2037%20%C2%B0C%E2%80%94air%20dingin%20cepat%20dihangatkan.%20Lemak%20dicerna%2C%20bukan%20dibekukan.%20Minum%20air%20yang%20cukup%20jauh%20lebih%20penting.%20%23FaktaSehat",
     },
     social_caption:
       "Mitos: Air es bikin lemak membeku. Fakta: Tubuh kita 37 °C—air dingin cepat dihangatkan. Lemak dicerna, bukan dibekukan. Minum air yang cukup jauh lebih penting. #FaktaSehat",
     faq_cta: {
       text: "Masih penasaran soal minum air, diet, atau metabolisme?",
-      wa_link: "https://wa.me/62812xxxxxxxx",
+      wa_link: "https://wa.me/6282237745751",
     },
     meta: {
       keywords: [
@@ -661,13 +661,13 @@ let semuaFakta = [
       instagram_story: "/share/ig/tidur-di-lantai-paru-paru-basah",
       tiktok: "/share/tiktok/tidur-di-lantai-paru-paru-basah",
       whatsapp:
-        "https://wa.me/?text=Mitos%3A%20Tidur%20di%20lantai%20bikin%20paru-paru%20basah.%0AFakta%3A%20Paru-paru%20basah%20%3D%20infeksi%20(pneumonia)%20atau%20cairan%20(edema)%2C%20bukan%20karena%20lantai.%20Tidur%20di%20lantai%20aman%20kalau%20bersih%20%26%20nyaman.",
+        "https://wa.me/6282237745751?text=Mitos%3A%20Tidur%20di%20lantai%20bikin%20paru-paru%20basah.%0AFakta%3A%20Paru-paru%20basah%20%3D%20infeksi%20(pneumonia)%20atau%20cairan%20(edema)%2C%20bukan%20karena%20lantai.%20Tidur%20di%20lantai%20aman%20kalau%20bersih%20%26%20nyaman.",
     },
     social_caption:
       "Mitos: Tidur di lantai bikin paru-paru basah. Fakta: Paru-paru basah = infeksi (pneumonia) atau cairan (edema), bukan karena lantai. Tidur di lantai aman kalau bersih & nyaman.",
     faq_cta: {
       text: "Masih bingung soal “paru-paru basah” atau penyakit pernapasan?",
-      wa_link: "https://wa.me/62812xxxxxxxx",
+      wa_link: "https://wa.me/6282237745751",
     },
     meta: {
       keywords: [
