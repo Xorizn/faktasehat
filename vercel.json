@@ -2,18 +2,38 @@
   "version": 2,
   "builds": [
     {
-      "src": "app.js",
+      "src": "server.js",
       "use": "@vercel/node"
     },
     {
-      "src": "public/assets/**/*",
+      "src": "public/**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
+      "src": "/assets/css/(.*)",
+      "dest": "/assets/css/$1"
+    },
+    {
+      "src": "/assets/fonts/(.*)",
+      "dest": "/assets/fonts/$1"
+    },
+    {
+      "src": "/assets/img/(.*)",
+      "dest": "/assets/img/$1"
+    },
+    {
+      "src": "/assets/js/(.*)",
+      "dest": "/assets/js/$1"
+    },
+    {
+      "src": "/assets/mail/(.*)",
+      "dest": "/assets/mail/$1"
+    },
+    {
       "src": "/assets/(.*)",
-      "dest": "/public/assets/$1"
+      "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
