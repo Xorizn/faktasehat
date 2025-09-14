@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FaktaSehat.Info — Cek Fakta Kesehatan</title>
+  <meta name="description" content="Cek fakta kesehatan, laporkan hoaks, artikel edukasi, video, permainan, dan konsultasi berbasis bukti." />
+  <!-- Open Graph / Twitter Cards -->
+  <meta property="og:title" content="FaktaSehat.Info — Cek Fakta Kesehatan" />
+  <meta property="og:description" content="Cek fakta kesehatan, laporkan hoaks, artikel edukasi, video, permainan, dan konsultasi berbasis bukti." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://faktasehat.info/" />
+  <meta property="og:image" content="https://faktasehat.info/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root {
+      --bg: #0b1020;          /* deep blue-ish */
+      --card: #111831;
+      --muted: #9fb0d3;
+      --text: #e7eeff;
+      --accent: #71b7ff;      /* soft blue */
+      --good: #2ea44f22;      /* soft greens */
+      --bad: #ff4d4d22;       /* soft red */
+      --warn: #ffb02022;      /* soft amber */
+      --info: #2ea8ff22;      /* soft blue info */
+      --neutral: #b5b5b522;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    * { box-sizing: border-box }
+    html, body { margin:0; padding:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: var(--bg); color: var(--text); }
+    a { color: var(--accent); text-decoration: none }
+    a:hover { text-decoration: underline }
+    .container { width: min(1200px, 92vw); margin: 0 auto }
+    header { position: sticky; top:0; z-index: 30; backdrop-filter: blur(10px); background: rgba(11,16,32,.72); border-bottom: 1px solid #1b2547 }
+    .nav { display:flex; gap: 18px; align-items:center; justify-content: space-between; padding: 14px 0 }
+    .brand { display:flex; gap:10px; align-items:center; font-weight: 700 }
+    .brand .logo { width:34px; height:34px; border-radius:10px; background: linear-gradient(140deg, #71b7ff, #b0ffa4); display:grid; place-items:center; color:#0b1020; font-weight:900 }
+    nav ul { display:flex; flex-wrap: wrap; gap: 12px; list-style:none; padding:0; margin:0 }
+    nav a { padding:8px 12px; border-radius: 10px; }
+    nav a:hover { background: #121a35 }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background: #1a2448; color: var(--text); padding: 10px 14px; border-radius: 12px; border:1px solid #263061; box-shadow: var(--shadow); cursor:pointer }
+    .btn:hover { background:#1d2952 }
+    .btn.primary { background: linear-gradient(180deg, #79c2ff, #5aa8ff); color:#0b1020; border: none }
+    .btn.good { background: #1f3a2b; border:1px solid #2fa36a }
+    .btn.warn { background: #3a2f1f; border:1px solid #e0a74f }
+
+    /* Sections */
+    section { padding: clamp(36px, 5vw, 72px) 0 }
+    .card { background: var(--card); border: 1px solid #1a2448; border-radius: var(--radius); box-shadow: var(--shadow) }
+    .grid { display:grid; gap: 16px }
+    .grid.col-2 { grid-template-columns: repeat(2, minmax(0,1fr)) }
+    .grid.col-3 { grid-template-columns: repeat(3, minmax(0,1fr)) }
+    .grid.col-4 { grid-template-columns: repeat(4, minmax(0,1fr)) }
+    @media (max-width: 960px){ .grid.col-3, .grid.col-4 { grid-template-columns: repeat(2, minmax(0,1fr)) } }
+    @media (max-width: 640px){ .grid.col-2, .grid.col-3, .grid.col-4 { grid-template-columns: 1fr } }
+
+    /* Hero */
+    .hero { display:grid; gap: 18px; align-items:center; grid-template-columns: 1.4fr 1fr }
+    .hero .left { display:grid; gap:18px }
+    .hero h1 { font-size: clamp(28px, 4.5vw, 44px); line-height:1.1; margin:0 }
+    .muted { color: var(--muted) }
+    .searchbar { display:flex; background: #0e1533; border:1px solid #263061; border-radius: 16px; overflow:hidden }
+    .searchbar input { all:unset; padding: 14px 16px; flex:1 }
+    .searchbar button { border:0; background: transparent; padding: 8px; margin: 6px; border-radius: 10px }
+    .searchbar button:hover { background: #17224b }
+    .pills { display:flex; gap:8px; flex-wrap: wrap }
+    .pill { background:#121a35; border:1px solid #263061; border-radius: 999px; padding: 6px 10px; font-size: 13px; color: var(--muted) }
+
+    /* Status badges */
+    .badge { display:inline-flex; align-items:center; gap:8px; padding: 6px 10px; border-radius: 999px; font-weight:600; font-size: 13px; letter-spacing:.2px; border:1px solid #263061 }
+    .badge.true { background: var(--good); color:#9af5b7; border-color:#2fa36a33 }
+    .badge.false { background: var(--bad); color:#ff9a9a; border-color:#ff4d4d33 }
+    .badge.misleading { background: var(--warn); color:#ffd38a; border-color:#ffb02033 }
+    .badge.context { background: var(--neutral); color:#cfd6ea; border-color:#6373a733 }
+    .badge.insufficient { background: var(--info); color:#a3d6ff; border-color:#2ea8ff33 }
+
+    /* Cards */
+    .item { padding:16px; display:grid; gap:12px }
+    .item h3 { margin:0; font-size: 18px }
+    .item .meta { display:flex; justify-content: space-between; align-items:center; gap:10px; color: var(--muted); font-size: 13px }
+    .item .actions { display:flex; gap:8px; align-items:center; flex-wrap:wrap }
+
+    /* Pyramid */
+    .pyramid { display:grid; gap:8px; align-items:end; justify-items:center }
+    .pyramid .lvl { width: 100%; max-width: 560px; height:46px; display:grid; place-items:center; border-radius: 8px; border:1px dashed #2a3767 }
+    .pyramid .lvl:nth-child(1){ background:#183152 }
+    .pyramid .lvl:nth-child(2){ background:#152b48 }
+    .pyramid .lvl:nth-child(3){ background:#12263f }
+    .pyramid .lvl:nth-child(4){ background:#102137 }
+    .pyramid .lvl:nth-child(5){ background:#0e1d31 }
+    .pyramid small { color: var(--muted) }
+
+    /* Filters */
+    .filters { display:flex; flex-wrap:wrap; gap:8px }
+    .select, .input { background:#0e1533; border:1px solid #263061; border-radius: 10px; color: var(--text); padding:10px 12px }
+    .select { appearance:none }
+
+    /* Forms */
+    form { display:grid; gap:12px }
+    label { font-size: 14px; color: var(--muted) }
+    input[type="text"], input[type="email"], input[type="url"], textarea, select { background:#0e1533; border:1px solid #263061; border-radius: 12px; color: var(--text); padding:12px }
+    textarea { min-height: 120px; resize: vertical }
+    input[type="file"] { color: var(--muted) }
+
+    /* Table-ish */
+    .stats { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px }
+    .stat { padding:14px; border-radius: 14px; background:#101735; border:1px solid #1e2a57 }
+    .stat b { font-size: 22px }
+    @media (max-width: 800px){ .stats { grid-template-columns: repeat(2, minmax(0,1fr)) } }
+
+    /* Footer */
+    footer { padding: 40px 0; border-top:1px solid #1b2547; background: #0a0f1f }
+
+    /* Modal */
+    dialog { width: min(760px, 92vw); border:1px solid #263061; border-radius: 16px; padding:0; background: var(--card); color:var(--text) }
+    dialog::backdrop { background: rgba(0,0,0,.55) }
+    .modal-head { display:flex; align-items:center; justify-content: space-between; padding:14px 16px; border-bottom:1px solid #1e2a57 }
+    .modal-body { padding:16px; display:grid; gap:12px }
+
+    /* Utility */
+    .row { display:flex; gap: 12px; flex-wrap: wrap; align-items:center }
+    .center { text-align:center }
+    .mt-1{ margin-top:6px } .mt-2{ margin-top:12px } .mt-3{ margin-top:18px } .mt-4{ margin-top:24px }
+    .mb-0{ margin-bottom:0 }
+    .pad { padding: 16px }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="FaktaSehat.Info">
+        <div class="logo" aria-hidden="true">FS</div>
+        <span>FaktaSehat.Info</span>
+      </div>
+      <nav aria-label="Menu utama">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#cek-fakta">Cek Fakta</a></li>
+          <li><a href="#laporkan">Laporkan Hoaks</a></li>
+          <li><a href="#artikel">Artikel & Modul</a></li>
+          <li><a href="#video">Video</a></li>
+          <li><a href="#game">Permainan</a></li>
+          <li><a href="#konsultasi">Konsultasi</a></li>
+          <li><a href="#kebijakan">Kebijakan</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#glosarium">Glosarium</a></li>
+          <li><a href="#transparansi">Transparansi</a></li>
+          <li><a href="#hubungi">Hubungi</a></li>
+        </ul>
+      </nav>
+      <a class="btn" href="#kampanye">Kampanye: Cek Izin BPOM</a>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <main id="home" class="container">
+    <section class="hero">
+      <div class="left">
+        <h1>Cek fakta kesehatan dalam <span style="color:#b7ffbd">1 menit</span>.</h1>
+        <p class="muted">Cari klaim, laporkan hoaks, dan dapatkan penjelasan berbasis bukti—dalam bahasa yang mudah dipahami.</p>
+        <div class="searchbar" role="search">
+          <input id="searchInput" type="text" placeholder="Cari klaim, misal: 'rebusan sirsak sembuhkan kanker'" aria-label="Cari klaim kesehatan" />
+          <button class="btn" onclick="doSearch()" aria-label="Cari">🔍</button>
+        </div>
+        <div class="row">
+          <a class="btn primary" href="#cek-fakta">Cek Fakta</a>
+          <a class="btn warn" href="#laporkan">Laporkan Hoaks</a>
+          <a class="btn good" href="#konsultasi">Konsultasi via WA</a>
+        </div>
+        <div class="pills mt-2" aria-label="Topik populer">
+          <span class="pill">DBD</span>
+          <span class="pill">Vaksin</span>
+          <span class="pill">Herbal & Jamu</span>
+          <span class="pill">Obat & BPOM</span>
+          <span class="pill">Kanker</span>
+        </div>
+      </div>
+      <div>
+        <div class="card pad">
+          <h3 class="mb-0">Sedang Ramai</h3>
+          <p class="muted mt-1">Tren misinformasi terbaru</p>
+          <div class="grid col-1 mt-2" id="trending">
+            <!-- Trending items populated below -->
+          </div>
+        </div>
+        <div class="card pad mt-3">
+          <h3 class="mb-0">Cara Kami Menilai Bukti</h3>
+          <p class="muted mt-1">Piramida bukti (semakin atas semakin kuat)</p>
+          <div class="pyramid mt-2" aria-label="Piramida tingkat bukti">
+            <div class="lvl">Meta-analisis & Ulasan Sistematik</div>
+            <div class="lvl">Uji Acak Terkontrol (RCT)</div>
+            <div class="lvl">Kohort / Kasus-Kontrol</div>
+            <div class="lvl">Seri Kasus / Studi Deskriptif</div>
+            <div class="lvl">Opini Ahli / Mekanistik</div>
+            <small>Catatan: konteks klinis dan kualitas metodologi selalu dipertimbangkan.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card pad" aria-labelledby="trust">
+      <h2 id="trust" class="mb-0">Kepercayaan & Transparansi</h2>
+      <div class="stats mt-2">
+        <div class="stat"><div>Jumlah klaim ditinjau</div><b id="stat-claims">0</b></div>
+        <div class="stat"><div>Rata-rata waktu tanggapan</div><b id="stat-sla">&lt;72 jam</b></div>
+        <div class="stat"><div>Referensi terindeks</div><b id="stat-refs">0</b></div>
+        <div class="stat"><div>Reviewer aktif</div><b id="stat-revs">0</b></div>
+      </div>
+      <div class="row mt-2">
+        <div class="pill">Mitra dokter: 12+</div>
+        <div class="pill">Afiliasi: TBM Janar Dūta</div>
+        <div class="pill">Kebijakan editorial ketat</div>
+      </div>
+      <form class="mt-3" onsubmit="newsletter(event)">
+        <label for="email">Dapatkan update (newsletter):</label>
+        <div class="row">
+          <input id="email" type="email" required placeholder="email@contoh.id" aria-label="Email" />
+          <button class="btn" type="submit">Daftar</button>
+        </div>
+      </form>
+      <div class="row mt-2">
+        <a class="pill" href="#">IG</a>
+        <a class="pill" href="#">TikTok</a>
+        <a class="pill" href="#">X</a>
+        <a class="pill" href="#">Facebook</a>
+      </div>
+    </section>
+
+    <!-- CEK FAKTA LIST -->
+    <section id="cek-fakta">
+      <div class="row" style="justify-content: space-between; align-items:end">
+        <div>
+          <h2 class="mb-0">Cek Fakta (Claim Reviews)</h2>
+          <p class="muted mt-1">Filter berdasarkan topik, status, tanggal, dan popularitas.</p>
+        </div>
+        <div class="row">
+          <select id="filter-topic" class="select" aria-label="Filter topik" onchange="renderClaims()">
+            <option value="">Semua topik</option>
+            <option>Vaksin</option>
+            <option>Kanker</option>
+            <option>Herbal</option>
+            <option>BPOM</option>
+            <option>DBD</option>
+          </select>
+          <select id="filter-status" class="select" aria-label="Filter status" onchange="renderClaims()">
+            <option value="">Semua status</option>
+            <option value="true">Benar</option>
+            <option value="false">Salah</option>
+            <option value="misleading">Menyesatkan</option>
+            <option value="context">Perlu konteks</option>
+            <option value="insufficient">Tidak cukup bukti</option>
+          </select>
+          <select id="sort-by" class="select" aria-label="Urutkan" onchange="renderClaims()">
+            <option value="date-desc">Terbaru</option>
+            <option value="date-asc">Terlama</option>
+            <option value="pop-desc">Popular</option>
+          </select>
+        </div>
+      </div>
+      <div id="claims" class="grid col-3 mt-2"></div>
+    </section>
+
+    <!-- DETAIL KLAIM (MODAL) -->
+    <dialog id="claimModal" aria-labelledby="claimTitle">
+      <div class="modal-head">
+        <strong id="claimTitle">Detail Klaim</strong>
+        <button class="btn" onclick="document.getElementById('claimModal').close()">Tutup ✕</button>
+      </div>
+      <div class="modal-body" id="claimBody">
+        <!-- Filled by JS -->
+      </div>
+    </dialog>
+
+    <!-- LAPORKAN HOAKS -->
+    <section id="laporkan" class="card pad">
+      <h2 class="mb-0">Laporkan Hoaks</h2>
+      <p class="muted mt-1">Bantu kami memprioritaskan klaim berdampak tinggi.</p>
+      <form onsubmit="submitReport(event)">
+        <div class="grid col-2">
+          <div>
+            <label>Tipe konten</label>
+            <select id="r-type" required>
+              <option value="teks">Teks</option>
+              <option value="gambar">Gambar</option>
+              <option value="video">Video</option>
+              <option value="tautan">Tautan</option>
+            </select>
+          </div>
+          <div>
+            <label>Platform</label>
+            <select id="r-platform" required>
+              <option>WhatsApp</option>
+              <option>Instagram</option>
+              <option>TikTok</option>
+              <option>Facebook</option>
+              <option>X (Twitter)</option>
+              <option>YouTube</option>
+              <option>Blog/Website</option>
+            </select>
+          </div>
+        </div>
+        <label for="r-url">URL sumber (opsional)</label>
+        <input id="r-url" type="url" placeholder="https://…" />
+        <label for="r-file">Upload tangkapan layar (opsional)</label>
+        <input id="r-file" type="file" accept="image/*" />
+        <label for="r-desc">Deskripsi singkat</label>
+        <textarea id="r-desc" required placeholder="Ringkas isi klaim, kapan/di mana beredar"></textarea>
+        <div class="grid col-2">
+          <div>
+            <label for="r-loc">Lokasi/komunitas (opsional)</label>
+            <input id="r-loc" type="text" placeholder="Denpasar, PKK, sekolah…" />
+          </div>
+          <div>
+            <label for="r-lang">Bahasa/daerah (opsional)</label>
+            <input id="r-lang" type="text" placeholder="Indonesia, Bali, Hokkien…" />
+          </div>
+        </div>
+        <label><input type="checkbox" required /> Saya setuju dengan kebijakan privasi (data akan dianonimkan).</label>
+        <label><input id="r-notif" type="checkbox" /> Kirim notifikasi hasil verifikasi ke email saya</label>
+        <div class="row">
+          <button class="btn warn" type="submit">Kirim laporan</button>
+          <div class="muted">Setelah submit: Anda mendapat nomor tiket & estimasi proses (secepat mungkin; prioritas dampak tinggi).</div>
+        </div>
+      </form>
+      <div class="card pad mt-3">
+        <b>Sebelum share, 3 langkah cek sehat:</b>
+        <ol>
+          <li>Periksa sumber (ada BPOM/izin/rujukan?</li>
+          <li>Bandingkan minimal 2 sumber kredibel (WHO/BPOM/Kemenkes).</li>
+          <li>Tanyakan konsekuensi jika salah (menunda terapi, efek samping).</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ARTIKEL & MODUL -->
+    <section id="artikel">
+      <h2 class="mb-0">Artikel & Modul</h2>
+      <p class="muted mt-1">Bahasa awam, referensi primer/sekunder, contoh lokal.</p>
+      <div class="grid col-3 mt-2" id="articles"></div>
+    </section>
+
+    <!-- VIDEO -->
+    <section id="video" class="card pad">
+      <h2 class="mb-0">Video Edukasi</h2>
+      <p class="muted mt-1">Durasi 45–90 detik untuk Reels/TikTok, playlist tematik.</p>
+      <div class="grid col-3 mt-2">
+        <div class="item card">
+          <div class="pad">
+            <div class="center">Embed Video #1</div>
+            <div class="muted">(Sematkan YouTube / player bebas iklan)</div>
+          </div>
+        </div>
+        <div class="item card">
+          <div class="pad">
+            <div class="center">Embed Video #2</div>
+          </div>
+        </div>
+        <div class="item card">
+          <div class="pad">
+            <div class="center">Embed Video #3</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="game">
+      <h2 class="mb-0">Permainan Edukatif</h2>
+      <p class="muted mt-1">Kuis cepat: Hoaks atau Fakta?</p>
+      <div class="card pad">
+        <div id="quiz"></div>
+        <button class="btn mt-2" onclick="startQuiz()">Mulai Kuis</button>
+      </div>
+    </section>
+
+    <!-- KONSULTASI -->
+    <section id="konsultasi" class="card pad">
+      <h2 class="mb-0">Konsultasi</h2>
+      <p class="muted mt-1">Bukan diagnosis; edukasi & referensi layanan resmi.</p>
+      <div class="grid col-2">
+        <div>
+          <a class="btn good" href="https://wa.me/6281234567890?text=Halo%20FaktaSehat%2C%20saya%20ingin%20bertanya%20tentang…">WhatsApp Deeplink</a>
+          <form class="mt-2" onsubmit="consultSubmit(event)">
+            <label>Pertanyaan singkat</label>
+            <textarea id="q" required placeholder="Tuliskan konteks & pertanyaan"></textarea>
+            <div class="row">
+              <button class="btn" type="submit">Kirim via email</button>
+              <span class="muted">SLA: 24–72 jam (non-urgensi)</span>
+            </div>
+          </form>
+        </div>
+        <div>
+          <b>Mini-FAQ</b>
+          <details class="mt-1"><summary>Kapan harus ke fasilitas kesehatan?</summary><p>Bila ada gejala berat, memburuk cepat, atau faktor risiko—segera ke IGD/Puskesmas.</p></details>
+          <details class="mt-1"><summary>Bagaimana cek izin BPOM?</summary><p>Kunjungi situs resmi Cek BPOM, cari berdasarkan nama produk/nomor izin.</p></details>
+          <details class="mt-1"><summary>Apakah jamu selalu aman?</summary><p>Tidak selalu—perhatikan interaksi obat, dosis, dan status izin edar.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEBIJAKAN & METODOLOGI -->
+    <section id="kebijakan">
+      <h2 class="mb-0">Kebijakan Editorial & Metodologi</h2>
+      <div class="card pad mt-2">
+        <ol>
+          <li>Alur: terima klaim → triase → telusur bukti → telaah sejawat (dokter + editor) → publikasi → pembaruan.</li>
+          <li>Grading bukti: Meta-analisis, RCT, Observasional, Kasus, Opini ahli.</li>
+          <li>Konflik kepentingan, pemutakhiran konten, dan cara koreksi diterapkan.</li>
+        </ol>
+        <p class="muted">Disclaimer: situs ini bukan pengganti konsultasi medis.</p>
+      </div>
+    </section>
+
+    <!-- TENTANG KAMI -->
+    <section id="tentang" class="card pad">
+      <h2 class="mb-0">Tentang Kami</h2>
+      <p class="muted mt-1">Tim TBM Janar Dūta, jejaring dokter umum & spesialis, serta kolaborator.</p>
+      <div class="grid col-3 mt-2">
+        <div class="item"><h3>Visi & Misi</h3><p>Meningkatkan literasi kesehatan berbasis bukti dengan empati dan integritas.</p></div>
+        <div class="item"><h3>Tim</h3><p>Editor, fact-checker, dokter mitra. (Isi profil & kualifikasi)</p></div>
+        <div class="item"><h3>Kolaborasi</h3><p>Influencer kesehatan, sekolah, posyandu, media lokal.</p></div>
+      </div>
+    </section>
+
+    <!-- GLOSARIUM & INDEKS REFERENSI -->
+    <section id="glosarium">
+      <h2 class="mb-0">Indeks Referensi & Glosarium</h2>
+      <div class="card pad mt-2">
+        <div class="row">
+          <input class="input" id="refSearch" placeholder="Cari referensi / istilah…" oninput="renderRefs()" />
+          <select class="select" id="refType" onchange="renderRefs()">
+            <option value="">Semua sumber</option>
+            <option value="jurnal">Jurnal</option>
+            <option value="regulasi">Regulasi</option>
+            <option value="panduan">Panduan</option>
+          </select>
+        </div>
+        <div id="refs" class="grid col-2 mt-2"></div>
+      </div>
+      <div class="card pad mt-2">
+        <h3 class="mb-0">Glosarium Awam</h3>
+        <div id="glossary" class="grid col-3 mt-2"></div>
+      </div>
+    </section>
+
+    <!-- TRANSPARANSI -->
+    <section id="transparansi" class="card pad">
+      <h2 class="mb-0">Transparansi</h2>
+      <div class="grid col-3 mt-2">
+        <div class="item">
+          <h3>Koreksi</h3>
+          <p>Pembaca dapat mengirim koreksi; perubahan ditandai "Diperbarui pada [tanggal]".</p>
+        </div>
+        <div class="item">
+          <h3>Pembiayaan</h3>
+          <p>Donasi publik, hibah pendidikan, tanpa iklan menyesatkan. Konflik kepentingan diungkap.</p>
+        </div>
+        <div class="item">
+          <h3>Konflik Kepentingan</h3>
+          <p>Deklarasi COI untuk setiap penulis/reviewer jika relevan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HUBUNGI & MEDIA KIT -->
+    <section id="hubungi">
+      <h2 class="mb-0">Hubungi Kami / Media Kit</h2>
+      <div class="grid col-2 mt-2">
+        <div class="card pad">
+          <form onsubmit="contactSubmit(event)">
+            <label>Nama</label>
+            <input id="c-name" required />
+            <label>Email</label>
+            <input id="c-email" type="email" required />
+            <label>Pesan</label>
+            <textarea id="c-msg" required></textarea>
+            <button class="btn" type="submit">Kirim</button>
+          </form>
+        </div>
+        <div class="card pad">
+          <h3>Media Kit</h3>
+          <ul>
+            <li>Logo & panduan merek (SVG/PNG)</li>
+            <li>Profil singkat FaktaSehat.Info</li>
+            <li>Kontak narahubung</li>
+          </ul>
+          <button class="btn" onclick="alert('Unduhan siap di versi produksi')">Unduh paket</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- KAMPANYE KHUSUS -->
+    <section id="kampanye" class="card pad">
+      <div class="row" style="justify-content:space-between; align-items:center">
+        <h2 class="mb-0">Kampanye: Cek Izin BPOM</h2>
+        <a class="btn" href="#">Buka Mini-Portal</a>
+      </div>
+      <p class="muted mt-1">Belajar cek izin edar dalam 30 detik.</p>
+      <ol>
+        <li>Buka situs resmi Cek BPOM.</li>
+        <li>Ketik nama produk / nomor izin.</li>
+        <li>Cocokkan pabrik, tanggal, & status.</li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container row" style="justify-content:space-between">
+      <div>© <span id="year"></span> FaktaSehat.Info • <a href="#kebijakan">Kebijakan Editorial</a></div>
+      <div class="row">
+        <a href="#transparansi">Transparansi</a>
+        <span class="muted">•</span>
+        <a href="#hubungi">Kontak</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Example ClaimReview JSON-LD for SEO -->
+  <script type="application/ld+json" id="claim-json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "url": "https://faktasehat.info/cek-fakta/rebusan-sirsak",
+    "datePublished": "2025-08-31",
+    "author": {"@type": "Organization", "name": "FaktaSehat.Info"},
+    "claimReviewed": "Rebusan sirsak menyembuhkan kanker tanpa kemoterapi.",
+    "headline": "Rebusan sirsak menyembuhkan kanker tanpa kemoterapi?",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "2",
+      "bestRating": "5",
+      "worstRating": "1",
+      "alternateName": "Menyesatkan"
+    }
+  }
+  </script>
+
+  <script>
+    // Dummy data (MVP). In produksi, ganti dengan data dari CMS / API
+    const CLAIMS = [
+      { id: 'sirsak', title: 'Rebusan sirsak menyembuhkan kanker tanpa kemoterapi?', status: 'misleading', topic: 'Kanker', date: '2025-08-20', pop: 95, summary: 'Tidak ada bukti klinis kuat bahwa rebusan sirsak menyembuhkan kanker. Menunda terapi onkologi meningkatkan risiko.', reviewer: 'dr. A. Onko' },
+      { id: 'minyak-telon-dbd', title: 'Mengoles minyak telon dapat mencegah DBD', status: 'false', topic: 'DBD', date: '2025-08-18', pop: 80, summary: 'Penularan DBD melalui gigitan nyamuk Aedes; minyak telon bukan repelan dengan bukti kuat.', reviewer: 'dr. B. Tropik' },
+      { id: 'vaksin-infertil', title: 'Vaksin menyebabkan infertilitas permanen', status: 'false', topic: 'Vaksin', date: '2025-07-30', pop: 92, summary: 'Studi besar tidak menemukan bukti vaksin menyebabkan infertilitas.', reviewer: 'dr. C. Obsgyn' },
+      { id: 'bpom-izin', title: 'Nomor izin BPOM bisa dipalsukan mudah', status: 'context', topic: 'BPOM', date: '2025-08-25', pop: 60, summary: 'Kasus pemalsuan ada, namun cek silang di situs resmi memadai untuk verifikasi.', reviewer: 'Editor' },
+      { id: 'daun-pepaya', title: 'Jus daun pepaya menyembuhkan DBD', status: 'insufficient', topic: 'DBD', date: '2025-08-12', pop: 88, summary: 'Bukti terbatas dan heterogen; jangan gantikan perawatan medis.', reviewer: 'dr. D. Hemato' },
+      { id: 'air-alkali', title: 'Air alkali “menetralisir” asam lambung', status: 'misleading', topic: 'Herbal', date: '2025-06-05', pop: 50, summary: 'Asam lambung diatur fisiologis; “netralisasi” tidak seperti klaim iklan.', reviewer: 'dr. E. Interna' },
+      { id: 'madu-bayi', title: 'Madu aman untuk bayi di bawah 1 tahun', status: 'false', topic: 'Herbal', date: '2025-05-10', pop: 78, summary: 'Risiko botulisme: bayi <12 bulan sebaiknya tidak diberi madu.', reviewer: 'dr. Anak' },
+      { id: 'jemur-pagi', title: 'Jemur 5–10 menit pagi cukup untuk vitamin D semua orang', status: 'context', topic: 'Pola makan', date: '2025-04-02', pop: 40, summary: 'Kebutuhan bervariasi; faktor kulit, lokasi, paparan. Tidak satu-ukuran-untuk-semua.', reviewer: 'dr. Kulit' },
+    ];
+
+    const ARTICLES = [
+      { title: 'Cara cek izin BPOM dalam 30 detik', tldr: ['Buka situs resmi BPOM','Cari nama/nomor izin','Cocokkan produsen & status'], link: '#', refs: 5 },
+      { title: 'TL;DR: Vaksin & Imunitas', tldr: ['Keamanan dimonitor ketat','Efek samping umumnya ringan','Manfaat jauh lebih besar'], link: '#', refs: 12 },
+      { title: 'Herbal & Mitos: apa kata bukti?', tldr: ['Bedakan tradisi vs bukti','Pantau interaksi obat','Ikuti izin edar'], link: '#', refs: 9 },
+      { title: 'Piramida Bukti: panduan kilat', tldr: ['Meta-analisis teratas','RCT kuat','Observasional memberi konteks'], link: '#', refs: 7 },
+      { title: 'DBD: pencegahan praktis', tldr: ['3M Plus','Repelan terbukti','Cari Nakes bila demam'], link: '#', refs: 6 },
+      { title: 'Obat & BPOM: baca label cerdas', tldr: ['Nomor izin','Komposisi','Tanggal kedaluwarsa'], link: '#', refs: 8 },
+    ];
+
+    const REFS = [
+      { type:'jurnal', title:'WHO Dengue Guidelines 2022', url:'#' },
+      { type:'panduan', title:'CDC Vaccine Safety Basics', url:'#' },
+      { type:'regulasi', title:'PerBPOM No. X Tahun 2024', url:'#' },
+      { type:'jurnal', title:'Meta-analysis: Papaya leaf in thrombocytopenia', url:'#' },
+      { type:'panduan', title:'IARC Monographs overview', url:'#' },
+    ];
+
+    const GLOSSARY = [
+      { term:'Meta-analisis', def:'Menggabungkan hasil beberapa studi untuk kesimpulan lebih kuat.' },
+      { term:'RCT', def:'Uji acak terkendali, standar emas menilai efektivitas.' },
+      { term:'Observasional', def:'Mengamati tanpa intervensi; rawan faktor perancu.' },
+      { term:'BPOM', def:'Badan Pengawas Obat dan Makanan di Indonesia.' },
+      { term:'Hoaks', def:'Informasi palsu/menyesatkan yang disebarkan seolah benar.' },
+    ];
+
+    // Populate UI
+    function statusBadge(status){
+      const map = { true:'Benar', false:'Salah', misleading:'Menyesatkan', context:'Perlu konteks', insufficient:'Tidak cukup bukti' };
+      const cls = `badge ${status}`;
+      return `<span class="${cls}">● ${map[status]}</span>`
+    }
+
+    function renderTrending(){
+      const container = document.getElementById('trending');
+      container.innerHTML = CLAIMS.slice(0,3).map(c => `
+        <div class="item card">
+          <div class="meta"><span>${new Date(c.date).toLocaleDateString('id-ID')}</span>${statusBadge(c.status)}</div>
+          <h3>${c.title}</h3>
+          <p class="muted">${c.summary}</p>
+          <div class="actions">
+            <button class="btn" onclick="openClaim('${c.id}')">Baca ulasan</button>
+            <button class="btn" onclick="shareClaim('${c.id}')">Bagikan</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderClaims(){
+      const topic = document.getElementById('filter-topic').value;
+      const status = document.getElementById('filter-status').value;
+      const sortBy = document.getElementById('sort-by').value;
+      let list = [...CLAIMS];
+      if (topic) list = list.filter(c => c.topic.toLowerCase() === topic.toLowerCase());
+      if (status) list = list.filter(c => c.status === status);
+      if (sortBy === 'date-desc') list.sort((a,b)=> b.date.localeCompare(a.date));
+      if (sortBy === 'date-asc') list.sort((a,b)=> a.date.localeCompare(b.date));
+      if (sortBy === 'pop-desc') list.sort((a,b)=> b.pop - a.pop);
+      document.getElementById('claims').innerHTML = list.map(c => `
+        <article class="item card" aria-labelledby="claim-${c.id}">
+          <div class="meta"><span>${new Date(c.date).toLocaleDateString('id-ID')}</span>${statusBadge(c.status)}</div>
+          <h3 id="claim-${c.id}">${c.title}</h3>
+          <p>${c.summary}</p>
+          <div class="meta"><span>Reviewer: ${c.reviewer}</span><span>Popularitas: ${c.pop}</span></div>
+          <div class="actions">
+            <button class="btn" onclick="openClaim('${c.id}')">Baca ulasan</button>
+            <button class="btn" onclick="askRelated('${c.id}')">Ajukan pertanyaan</button>
+          </div>
+        </article>
+      `).join('');
+      // Stats
+      document.getElementById('stat-claims').textContent = CLAIMS.length;
+    }
+
+    function renderArticles(){
+      const el = document.getElementById('articles');
+      el.innerHTML = ARTICLES.map(a => `
+        <article class="item card">
+          <h3>${a.title}</h3>
+          <ul>${a.tldr.map(x=>`<li>${x}</li>`).join('')}</ul>
+          <div class="meta"><span>${a.refs} referensi</span><a class="btn" href="${a.link}">Baca</a></div>
+        </article>
+      `).join('');
+      document.getElementById('stat-refs').textContent = REFS.length;
+      document.getElementById('stat-revs').textContent = 3;
+    }
+
+    function renderRefs(){
+      const q = (document.getElementById('refSearch').value||'').toLowerCase();
+      const t = document.getElementById('refType').value;
+      const list = REFS.filter(r => (!t || r.type===t) && (!q || r.title.toLowerCase().includes(q)));
+      document.getElementById('refs').innerHTML = list.map(r => `
+        <a class="item card" href="${r.url}">
+          <div class="meta"><span class="pill">${r.type}</span></div>
+          <h3>${r.title}</h3>
+        </a>
+      `).join('');
+    }
+
+    function renderGlossary(){
+      document.getElementById('glossary').innerHTML = GLOSSARY.map(g => `
+        <div class="item card"><h3>${g.term}</h3><p class="muted">${g.def}</p></div>
+      `).join('');
+    }
+
+    // Claim modal
+    function openClaim(id){
+      const c = CLAIMS.find(x=>x.id===id);
+      const body = document.getElementById('claimBody');
+      document.getElementById('claimTitle').textContent = c.title;
+      body.innerHTML = `
+        <div class="row">${statusBadge(c.status)} <span class="pill">${new Date(c.date).toLocaleDateString('id-ID')}</span> <span class="pill">Topik: ${c.topic}</span></div>
+        <p><b>Ringkasan cepat:</b> ${c.summary}</p>
+        <div class="card pad">
+          <b>Mengapa?</b>
+          <ul>
+            <li>Tinjauan bukti: level & kualitas studi.</li>
+            <li>Risiko bila dipercaya: menunda terapi, efek samping, biaya.</li>
+            <li>Apa yang sebaiknya dilakukan: konsultasi nakes; rujukan resmi.</li>
+          </ul>
+        </div>
+        <div class="row">
+          <button class="btn" onclick="alert('Schema.org ClaimReview tertanam untuk SEO')">Schema.org</button>
+          <button class="btn" onclick="shareClaim('${c.id}')">Bagikan</button>
+          <button class="btn" onclick="askRelated('${c.id}')">Ajukan pertanyaan</button>
+        </div>
+        <details class="mt-2"><summary>Penjelasan lengkap</summary>
+          <p>Konteks kemunculan klaim, referensi budaya/komunitas, serta pemutakhiran data.</p>
+        </details>
+        <details class="mt-2"><summary>Referensi</summary>
+          <ul>
+            <li>WHO / CDC / BPOM / Jurnal peer-reviewed (contoh placeholder)</li>
+          </ul>
+        </details>
+      `;
+      document.getElementById('claimModal').showModal();
+    }
+
+    function shareClaim(id){
+      const c = CLAIMS.find(x=>x.id===id);
+      const text = `${c.title} — Lihat ulasan di FaktaSehat.Info`;
+      const url = `https://faktasehat.info/cek-fakta/${id}`;
+      if (navigator.share) navigator.share({ title: c.title, text, url }).catch(()=>{});
+      else prompt('Salin tautan untuk dibagikan:', url);
+    }
+
+    function askRelated(id){
+      const url = `https://wa.me/6281234567890?text=Halo%20FaktaSehat%2C%20saya%20punya%20pertanyaan%20terkait%20klaim:%20${encodeURIComponent(id)}`;
+      window.open(url, '_blank');
+    }
+
+    // Forms
+    function submitReport(e){
+      e.preventDefault();
+      const ticket = Math.random().toString(36).slice(2,8).toUpperCase();
+      alert(`Terima kasih! Nomor tiket Anda: ${ticket}. Kami memproses secepat mungkin (prioritas klaim berdampak tinggi).`);
+      e.target.reset();
+    }
+    function newsletter(e){ e.preventDefault(); alert('Terima kasih sudah berlangganan!'); e.target.reset(); }
+    function consultSubmit(e){ e.preventDefault(); alert('Pertanyaan terkirim. Kami akan membalas 24–72 jam.'); e.target.reset(); }
+    function contactSubmit(e){ e.preventDefault(); alert('Pesan terkirim. Terima kasih!'); e.target.reset(); }
+
+    // Search
+    function doSearch(){
+      const q = (document.getElementById('searchInput').value||'').toLowerCase();
+      if (!q) { document.getElementById('filter-topic').value=''; document.getElementById('filter-status').value=''; renderClaims(); return; }
+      const hit = CLAIMS.find(c => c.title.toLowerCase().includes(q) || c.summary.toLowerCase().includes(q));
+      if (hit) openClaim(hit.id); else alert('Belum ada hasil untuk kueri tersebut. Coba laporkan hoaks di menu Laporkan.');
+    }
+
+    // Quiz mini-game
+    const QUIZ = [
+      { q: '“Jus daun pepaya menyembuhkan DBD.”', a: 'Hoaks/Perlu bukti', exp: 'Bukti masih terbatas; jangan gantikan perawatan medis.' },
+      { q: '“Bayi < 1 tahun aman minum madu.”', a: 'Hoaks', exp: 'Risiko botulisme — hindari madu untuk bayi.' },
+      { q: '“Cek nomor izin BPOM bisa di situs resmi.”', a: 'Fakta', exp: 'Gunakan portal resmi BPOM untuk verifikasi.' }
+    ];
+    let quizIdx = 0, score = 0;
+    function startQuiz(){ quizIdx = 0; score = 0; renderQuiz(); }
+    function renderQuiz(){
+      const box = document.getElementById('quiz');
+      if (quizIdx >= QUIZ.length){
+        box.innerHTML = `<div class='center'><h3>Skor Anda: ${score}/${QUIZ.length}</h3><button class='btn mt-2' onclick='startQuiz()'>Ulangi</button></div>`; return;
+      }
+      const cur = QUIZ[quizIdx];
+      box.innerHTML = `
+        <h3>${cur.q}</h3>
+        <div class='row mt-2'>
+          <button class='btn' onclick="answer('Fakta')">Fakta</button>
+          <button class='btn warn' onclick="answer('Hoaks')">Hoaks</button>
+          <button class='btn' onclick="answer('Hoaks/Perlu bukti')">Perlu bukti</button>
+        </div>
+        <div id='exp' class='muted mt-2'></div>
+      `;
+    }
+    function answer(option){
+      const cur = QUIZ[quizIdx];
+      const correct = option.toLowerCase() === cur.a.toLowerCase();
+      if (correct) score++;
+      document.getElementById('exp').textContent = (correct? 'Benar! ':'Kurang tepat. ') + cur.exp;
+      quizIdx++; setTimeout(renderQuiz, 1100);
+    }
+
+    // Init
+    renderTrending();
+    renderClaims();
+    renderArticles();
+    renderRefs();
+    renderGlossary();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="FaktaSehat - Laporkan Hoaks" />
+
+    <!-- ========== Page Title ========== -->
+    <title>FaktaSehat - Laporkan Hoaks</title>
+
+    <!-- ========== Favicon Icon ========== -->
+    <link
+      rel="shortcut icon"
+      href="assets/img/favicon.png"
+      type="image/x-icon"
+    />
+
+    <!-- ========== Start Stylesheet ========== -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/themify-icons.css" rel="stylesheet" />
+    <link href="assets/css/flaticon-set.css" rel="stylesheet" />
+    <link href="assets/css/magnific-popup.css" rel="stylesheet" />
+    <link href="assets/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.css" rel="stylesheet" />
+    <link href="assets/css/bootsnav.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="assets/css/responsive.css" rel="stylesheet" />
+    
+    <!-- ========== End Stylesheet ========== -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5/html5shiv.min.js"></script>
+      <script src="assets/js/html5/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ========== Google Fonts ========== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Preloader Start -->
+    <div class="se-pre-con"></div>
+    <!-- Preloader Ends -->
+
+    <!-- Header 
+    ============================================= -->
+    <%- include('partials/_head') %>
+    <!-- End Header -->
+
+    <!-- Start Breadcrumb 
+    ============================================= -->
+
+    <div
+      class="breadcrumb-area gradient-bg bg-cover shadow dark text-light text-center"
+      style="background-image: url('https://web.komdigi.go.id/resource/ZHJ1cGFsLzVfMTMuanBn')"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <h1>Laporkan Hoaks</h1>
+            <ul class="breadcrumb">
+              <li>
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+              </li>
+              <li class="active">Laporkan Hoaks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Start Contact Area
+    ============================================= -->
+
+    <div class="contact-area default-padding">
+      <div class="container">
+        <div class="contact-items">
+          <div class="">
+            <section id="laporkan" class="laporkan-card pad">
+              <h2 class="mb-0">Laporkan Hoaks</h2>
+              <p class="muted mt-1">
+                Bantu kami memprioritaskan klaim berdampak tinggi.
+              </p>
+              <form onsubmit="submitReport(event)">
+                <div class="grid col-2">
+                  <div>
+                    <label>Tipe konten</label>
+                    <select id="r-type" required>
+                      <option value="teks">Teks</option>
+                      <option value="gambar">Gambar</option>
+                      <option value="video">Video</option>
+                      <option value="tautan">Tautan</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Platform</label>
+                    <select id="r-platform" required>
+                      <option>WhatsApp</option>
+                      <option>Instagram</option>
+                      <option>TikTok</option>
+                      <option>Facebook</option>
+                      <option>X (Twitter)</option>
+                      <option>YouTube</option>
+                      <option>Blog/Website</option>
+                    </select>
+                  </div>
+                </div>
+                <label for="r-url">URL sumber (opsional)</label>
+                <input id="r-url" type="url" placeholder="https://…" />
+                <label for="r-file">Upload tangkapan layar (opsional)</label>
+                <input id="r-file" type="file" accept="image/*" />
+                <label for="r-desc">Deskripsi singkat</label>
+                <textarea
+                  id="r-desc"
+                  required
+                  placeholder="Ringkas isi klaim, kapan/di mana beredar"
+                ></textarea>
+                <div class="grid col-2">
+                  <div>
+                    <label for="r-loc">Lokasi/komunitas (opsional)</label>
+                    <input
+                      id="r-loc"
+                      type="text"
+                      placeholder="Denpasar, PKK, sekolah…"
+                    />
+                  </div>
+                  <div>
+                    <label for="r-lang">Bahasa/daerah (opsional)</label>
+                    <input
+                      id="r-lang"
+                      type="text"
+                      placeholder="Indonesia, Bali, Hokkien…"
+                    />
+                  </div>
+                </div>
+                <label
+                  ><input type="checkbox" required /> Saya setuju dengan
+                  kebijakan privasi (data akan dianonimkan).</label
+                >
+                <label
+                  ><input id="r-notif" type="checkbox" /> Kirim notifikasi hasil
+                  verifikasi ke email saya</label
+                >
+                <div class="row">
+                  <button class="btn warn" type="submit">Kirim laporan</button>
+                  <div class="muted">
+                    Setelah submit: Anda mendapat nomor tiket & estimasi proses
+                    (secepat mungkin; prioritas dampak tinggi).
+                  </div>
+                </div>
+              </form>
+
+              <div class="laporkan-form-card mt-3">
+                <b>Sebelum share, 3 langkah cek sehat:</b>
+                <ol>
+                  <li>Periksa sumber (ada BPOM/izin/rujukan?)</li>
+                  <li>
+                    Bandingkan minimal 2 sumber kredibel (WHO/BPOM/Kemenkes).
+                  </li>
+                  <li>
+                    Tanyakan konsekuensi jika salah (menunda terapi, efek
+                    samping).
+                  </li>
+                </ol>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Contact -->
+
+    <!-- Star Footer
+    ============================================= -->
+    <%- include('partials/_footer') %>
+    <!-- End Footer-->
+
+    <!-- jQuery Frameworks
+    ============================================= -->
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/equal-height.min.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/modernizr.custom.13711.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/progress-bar.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/count-to.js"></script>
+    <script src="assets/js/YTPlayer.min.js"></script>
+    <script src="assets/js/circle-progress.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/bootsnav.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

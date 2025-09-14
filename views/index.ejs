@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="FaktaSehat - Home" />
+
+    <!-- ========== Page Title ========== -->
+    <title>FaktaSehat - Home</title>
+
+    <!-- ========== Favicon Icon ========== -->
+    <link
+      rel="shortcut icon"
+      href="assets/img/favicon.png"
+      type="image/x-icon"
+    />
+
+    <!-- ========== Start Stylesheet ========== -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/themify-icons.css" rel="stylesheet" />
+    <link href="assets/css/flaticon-set.css" rel="stylesheet" />
+    <link href="assets/css/magnific-popup.css" rel="stylesheet" />
+    <link href="assets/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.css" rel="stylesheet" />
+    <link href="assets/css/bootsnav.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="assets/css/responsive.css" rel="stylesheet" />
+    <!-- ========== End Stylesheet ========== -->
+
+    <!-- ========== Google Fonts ========== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Preloader Start -->
+    <div class="se-pre-con"></div>
+    <!-- Preloader Ends -->
+
+    <!-- Header 
+    ============================================= -->
+    <%- include('partials/_head') %>
+    <!-- End Header -->
+
+    <!-- Start Banner 
+    ============================================= -->
+    <div
+      class="banner-area tab-auto-height inc-list bg-gradient-mixed pt-50p text-default"
+    >
+      <div class="box-table">
+        <div class="box-cell">
+          <div class="container">
+            <div class="content">
+              <div class="row align-center">
+                <div class="col-lg-7 col-md-12">
+                  <h2>Cek <strong>Fakta Kesehatan</strong></h2>
+                  <p>
+                    Cari klaim, laporkan hoaks, dan dapatkan penjelasan berbasis
+                    bukti ilmiah dengan bahasa yang mudah dipahami.
+                  </p>
+
+                </div>
+                <!-- Start Appoinment Form -->
+
+                <!-- End Appoinment Form -->
+              </div>
+            </div>
+          </div>
+          <div class="shape">
+            <img src="assets/img/shape/9.png" alt="Shape" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Banner -->
+
+    <!-- Start Link Area
+    ============================================= -->
+    <div id="cekfakta" class="link-area inc-border default-padding-top">
+      <div class="container">
+        <div class="link-items">
+          <div class="subscribe-area text-light text-center">
+            <div class="container">
+              <div class="subscribe-form">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form">
+                      <h2>Cek fakta kesehatan dalam 1 menit.</h2>
+                      <p>
+                        Cari klaim, laporkan hoaks, dan dapatkan penjelasan
+                        berbasis bukti—dalam bahasa yang mudah dipahami.
+                      </p>
+                      <div class="search-box">
+                        <input
+                          class="cekfakta"
+                          id="searchInput"
+                          type="text"
+                          placeholder="Cari klaim, misal: 'rebusan sirsak sembuhkan kanker'"
+                          aria-label="Cari klaim kesehatan"
+                        />
+                        <button
+                          type="submit"
+                          onclick="doSearch()"
+                          aria-label="Cari"
+                        >
+                          Cari
+                        </button>
+                      </div>
+                      <br />
+                      <div
+                        class="d-flex justify-content-center gap-3 flex-wrap row"
+                      >
+                        <a
+                          href="#"
+                          class="btn btn-primary rounded-pill px-4 mx-2"
+                        >
+                          🔍 Cek Fakta
+                        </a>
+                        <a
+                          href="/laporkanhoax"
+                          class="btn btn-warning rounded-pill px-4 text-dark mx-2"
+                        >
+                          📢 Laporkan Hoaks
+                        </a>
+                        <a
+                          href="https://wa.me/628xxxxxxx"
+                          class="btn btn-success rounded-pill px-4 mx-2"
+                        >
+                          💬 Konsultasi via WA
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br /><br />
+
+    <!-- End Link Area -->
+
+    <!-- Start Our Process
+    ============================================= -->
+    <div class="process-area default-padding-bottom">
+      <div class="container">
+        <div class="process-items">
+          <div class="row">
+            <div class="col-lg-5 heading">
+              <h2>
+                Bagaimana cara <br />mendapatkan klarifikasi hoaks kesehatan
+                dari kami?
+              </h2>
+              <p>
+                Kami memahami banyaknya informasi kesehatan yang simpang siur di
+                masyarakat. Melalui layanan ini, Anda bisa dengan mudah
+                mendapatkan klarifikasi dari tim medis kami agar tidak salah
+                menerima informasi.
+              </p>
+            </div>
+            <div class="col-lg-7">
+              <div class="process-items text-center">
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 single-item">
+                    <div class="item">
+                      <i class="flaticon-calendar-1"></i>
+                      <h5>Kirim Pertanyaan</h5>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 single-item">
+                    <div class="item">
+                      <i class="flaticon-doctor"></i>
+                      <h5>Tim Kami Meninjau</h5>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 single-item">
+                    <div class="item">
+                      <i class="flaticon-heartbeat"></i>
+                      <h5>Terima Klarifikasi</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- adsfadsfdsf -->
+    <!-- End Our Process -->
+
+    <div class="blog-area default-padding bottom-less">
+      <div class="container-lg">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="site-heading text-center">
+              <h4>Cek Fakta</h4>
+              <h2>Cek Fakta (Claim Reviews)</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="blog-items">
+          <div class="row" id="claims-container">
+            <!-- Single Item -->
+            <!-- Single Item -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="blog-area full-blog blog-standard full-blog default-padding"
+      id="permainan-edukatif"
+    >
+      <div class="container">
+        <div class="row align-center">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="site-heading text-center">
+              <h4>Permainan</h4>
+              <h2>Permainan Edukatif</h2>
+            </div>
+          </div>
+        </div>
+        <div class="blog-items">
+          <div class="row">
+            <div class="blog-content col-lg-10 offset-lg-1 col-md-12">
+              <div class="blog-item-box">
+                <!-- Quiz Item -->
+                <div class="single-item">
+                  <div class="item">
+                    <div class="info text-center">
+                      <h4 id="question">Loading soal...</h4>
+                      <div class="mt-3">
+                        <button
+                          class="btn btn-theme quiz-btn"
+                          onclick="checkAnswer('Fakta')"
+                        >
+                          Fakta
+                        </button>
+                        <button
+                          class="btn btn-theme quiz-btn"
+                          onclick="checkAnswer('Hoaks')"
+                        >
+                          Hoaks
+                        </button>
+                        <button
+                          class="btn btn-theme quiz-btn"
+                          onclick="checkAnswer('Hoaks/Perlu bukti')"
+                        >
+                          Perlu Bukti
+                        </button>
+                      </div>
+                      <p class="quiz-feedback mt-3" id="feedback"></p>
+                      <div class="quiz-score mt-2" id="score"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Quiz Item -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Start Why Chose Us
+    ============================================= -->
+    <div class="about-area default-padding-bottom" id="about-us">
+      <div class="container">
+        <div class="choseus-items">
+          <div class="row align-center">
+            <div class="col-lg-6 thumb-box left-thumb">
+              <img src="assets/img/bg-4.png" alt="Thumb" />
+            </div>
+            <div class="col-lg-6 info">
+              <h5>About Us</h5>
+              <h2>
+                Melawan Hoaks, Menyebarkan Fakta. Bersama Tenaga Medis untuk
+                Edukasi Kesehatan.
+              </h2>
+              <p>
+                Website ini hadir sebagai ruang edukasi untuk melawan hoaks
+                kesehatan yang kerap menyesatkan masyarakat. Tim kami terdiri
+                dari mahasiswa kedokteran, dokter muda (koas), dan dokter yang
+                berkomitmen menghadirkan informasi akurat, berbasis bukti
+                ilmiah, serta mudah dipahami.
+              </p>
+              <p>
+                Kami percaya bahwa akses terhadap informasi kesehatan yang benar
+                adalah hak setiap orang. Karena itu, kami berusaha menyajikan
+                klarifikasi hoaks dengan pendekatan yang sederhana, jelas, dan
+                didukung sumber terpercaya agar masyarakat dapat lebih bijak
+                dalam menerima dan menyebarkan informasi.
+              </p>
+              <ul>
+                <li>
+                  <div class="info">
+                    <h4>Fokus Kami</h4>
+                    <div class="items">
+                      <span>Edukasi Kesehatan</span>
+                      <span>Klarifikasi Hoaks</span>
+                      <span>Kolaborasi Medis</span>
+                      <span>Masyarakat Cerdas Digital</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Why Chose Us -->
+
+    <!-- Star Blog
+    ============================================= -->
+    <div class="blog-area default-padding bottom-less">
+      <div class="container">
+        <div class="row align-center">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="site-heading text-center">
+              <h4>News</h4>
+              <h2>Latest Blog</h2>
+            </div>
+          </div>
+        </div>
+        <div class="blog-items">
+          <div class="row" id="article-container">
+            <!-- Single Item -->
+
+            <!-- End Single Item -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Blog Area -->
+
+    <!-- Start Contact Area
+    ============================================= -->
+    <div id="konsultasi" class="contact-area bg-gray default-padding">
+      <div class="container">
+        <div class="contact-items">
+          <div class="row">
+            <div class="col-lg-6 left-item">
+              <div class="content">
+                <h2><strong>Konsultasi</strong></h2>
+                <form
+                  action="assets/mail/contact.php"
+                  method="POST"
+                  class="contact-form"
+                >
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group comments">
+                        <textarea
+                          class="form-control"
+                          id="comments"
+                          name="comments"
+                          placeholder="Tuliskan konteks & pertanyaan"
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <button type="submit" name="submit" id="submit">
+                        Send Message <i class="fa fa-paper-plane"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Alert Message -->
+                  <div class="col-lg-12 alert-notification">
+                    <div id="message" class="alert-msg"></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="col-lg-6 faqs right-item">
+              <div class="accordion" id="accordionExample">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h4
+                      class="mb-0"
+                      data-toggle="collapse"
+                      data-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      Kapan harus ke fasilitas kesehatan?
+                    </h4>
+                  </div>
+
+                  <div
+                    id="collapseOne"
+                    class="collapse show"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordionExample"
+                  >
+                    <div class="card-body">
+                      <p>
+                        Jika Anda mengalami gejala yang semakin memburuk, nyeri
+                        hebat, sesak napas, pingsan, atau ada faktor risiko
+                        seperti penyakit kronis, segera pergi ke IGD atau
+                        Puskesmas terdekat. Jangan menunda, karena penanganan
+                        lebih cepat dapat mencegah kondisi semakin parah. Untuk
+                        gejala ringan, tetap disarankan memantau keadaan di
+                        rumah sambil berkonsultasi dengan tenaga medis bila
+                        memungkinkan.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h4
+                      class="mb-0 collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                    >
+                      Bagaimana cara cek izin BPOM?
+                    </h4>
+                  </div>
+                  <div
+                    id="collapseTwo"
+                    class="collapse"
+                    aria-labelledby="headingTwo"
+                    data-parent="#accordionExample"
+                  >
+                    <div class="card-body">
+                      <p>
+                        Anda bisa memeriksa legalitas suatu produk kesehatan,
+                        makanan, minuman, atau suplemen melalui situs resmi Cek
+                        BPOM. Cukup masukkan nama produk, merek, atau nomor
+                        registrasi yang tertera pada kemasan. Dengan cara ini,
+                        Anda bisa memastikan produk tersebut benar-benar
+                        terdaftar, teruji, dan aman dikonsumsi. Jangan mudah
+                        percaya pada klaim kesehatan tanpa izin edar resmi.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h4
+                      class="mb-0 collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                      Apakah jamu selalu aman untuk dikonsumsi?
+                    </h4>
+                  </div>
+                  <div
+                    id="collapseThree"
+                    class="collapse"
+                    aria-labelledby="headingThree"
+                    data-parent="#accordionExample"
+                  >
+                    <div class="card-body">
+                      <p>
+                        Tidak selalu. Walaupun berbahan alami, jamu tetap bisa
+                        menimbulkan efek samping, terutama jika dikonsumsi
+                        berlebihan, bercampur dengan obat lain, atau tidak
+                        memiliki izin edar resmi. Beberapa jamu bahkan bisa
+                        berinteraksi dengan obat medis sehingga memperkuat atau
+                        melemahkan efeknya. Karena itu, selalu perhatikan dosis,
+                        aturan pakai, dan pastikan produk memiliki nomor izin
+                        dari BPOM agar lebih terjamin keamanannya.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Contact -->
+
+    <!-- Star Footer
+    ============================================= -->
+    <%- include('partials/_footer') %>
+    <!-- End Footer-->
+
+    <!-- jQuery Frameworks
+    ============================================= -->
+    <script src="assets/js/index-html.js"></script>
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/equal-height.min.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/modernizr.custom.13711.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/progress-bar.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/count-to.js"></script>
+    <script src="assets/js/YTPlayer.min.js"></script>
+    <script src="assets/js/circle-progress.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/bootsnav.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

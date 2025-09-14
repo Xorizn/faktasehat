@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="FaktaSehat - Glosarium" />
+
+    <!-- ========== Page Title ========== -->
+    <title>FaktaSehat - Glosarium</title>
+
+    <!-- ========== Favicon Icon ========== -->
+    <link
+      rel="shortcut icon"
+      href="assets/img/favicon.png"
+      type="image/x-icon"
+    />
+
+    <!-- ========== Start Stylesheet ========== -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/themify-icons.css" rel="stylesheet" />
+    <link href="assets/css/flaticon-set.css" rel="stylesheet" />
+    <link href="assets/css/magnific-popup.css" rel="stylesheet" />
+    <link href="assets/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.css" rel="stylesheet" />
+    <link href="assets/css/bootsnav.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="assets/css/responsive.css" rel="stylesheet" />
+    <!-- ========== End Stylesheet ========== -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5/html5shiv.min.js"></script>
+      <script src="assets/js/html5/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ========== Google Fonts ========== -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Preloader Start -->
+    <div class="se-pre-con"></div>
+    <!-- Preloader Ends -->
+
+    <!-- Start Header Top 
+    ============================================= -->
+    <%- include('partials/_head') %>
+    <!-- End Header -->
+
+    <!-- Start Breadcrumb 
+    ============================================= -->
+
+    <!-- End Breadcrumb -->
+
+    <!-- Star Doctors Area
+    ============================================= -->
+    <div class="blog-area default-padding bottom-less">
+      <div class="container-lg">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="site-heading text-center">
+              <h4>Glosarium</h4>
+              <h2>Glosarium</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="blog-items">
+          <div class="row" id="glossary-list"></div>
+        </div>
+      </div>
+    </div>
+    <!-- End Doctors Area -->
+
+    <!-- Star Footer
+    ============================================= -->
+    <%- include('partials/_footer') %>
+    <!-- End Footer-->
+
+    <script>
+      // Data JSON (bisa juga diambil dari file eksternal atau API)
+      const glossaryData = [
+        {
+          term: "Angina Pectoris",
+          definition:
+            "Nyeri dada yang terjadi ketika otot jantung tidak mendapatkan cukup oksigen karena penyempitan atau penyumbatan pembuluh darah. Ini adalah istilah medis untuk kondisi yang sering disebut 'angin duduk' oleh masyarakat awam.",
+        },
+        {
+          term: "BPOM",
+          definition:
+            "Badan Pengawas Obat dan Makanan. Lembaga di Indonesia yang bertugas mengawasi peredaran obat-obatan dan makanan untuk memastikan keamanan, khasiat, dan mutunya.",
+        },
+        {
+          term: "Edema Paru",
+          definition:
+            "Kondisi medis di mana terjadi penumpukan cairan di dalam kantung-kantung udara (alveoli) di paru-paru. Kondisi ini sering disebut sebagai salah satu bentuk 'paru-paru basah' dan biasanya disebabkan oleh masalah jantung atau ginjal.",
+        },
+        {
+          term: "Emulsifikasi",
+          definition:
+            "Proses pemecahan gumpalan lemak besar menjadi butiran-butiran yang lebih kecil di dalam sistem pencernaan. Proses ini dibantu oleh cairan empedu agar lemak lebih mudah dicerna oleh enzim.",
+        },
+        {
+          term: "Level Bukti (Tingkat Bukti)",
+          definition:
+            "Hierarki atau tingkatan kualitas bukti ilmiah yang digunakan untuk menilai seberapa kuat sebuah klaim kesehatan didukung oleh penelitian. Bukti terkuat berasal dari meta-analisis dan uji klinis acak (RCT), sedangkan yang lebih lemah berasal dari studi observasional, laporan kasus, atau opini ahli.",
+        },
+        {
+          term: "Meta-analisis",
+          definition:
+            "Sebuah metode penelitian yang menggabungkan dan menganalisis hasil dari beberapa studi ilmiah independen untuk mendapatkan kesimpulan yang lebih kuat dan komprehensif.",
+        },
+        {
+          term: "Neurotoksik",
+          definition:
+            "Sifat suatu zat yang beracun atau dapat merusak jaringan saraf. Paparan zat neurotoksik dapat mengganggu fungsi normal sistem saraf.",
+        },
+        {
+          term: "Pneumonia",
+          definition:
+            "Infeksi yang menyebabkan peradangan pada kantung udara di salah satu atau kedua paru-paru. Kantung udara bisa terisi cairan atau nanah, menyebabkan batuk, demam, dan kesulitan bernapas. Ini adalah kondisi medis utama yang sering disebut 'paru-paru basah'.",
+        },
+        {
+          term: "RCT (Randomized Controlled Trial)",
+          definition:
+            "Uji Klinis Acak Terkontrol. Standar emas dalam penelitian medis di mana peserta secara acak dibagi menjadi kelompok yang menerima pengobatan (intervensi) dan kelompok yang tidak (kontrol) untuk membandingkan efektivitasnya.",
+        },
+        {
+          term: "Schema.org/ClaimReview",
+          definition:
+            "Sebuah set kode standar (structured data) yang ditambahkan ke halaman web untuk membantu mesin pencari seperti Google mengenali konten pengecekan fakta. Ini memungkinkan Google menampilkan ringkasan hasil cek fakta langsung di hasil pencarian.",
+        },
+        {
+          term: "Thermoregulation",
+          definition:
+            "Kemampuan suatu organisme untuk menjaga suhu inti tubuhnya dalam batas tertentu, meskipun suhu lingkungan sekitar berubah. Pada manusia, suhu inti tubuh dijaga stabil di sekitar 37°C.",
+        },
+        {
+          term: "Trombosit",
+          definition:
+            "Keping darah atau platelet, yaitu sel darah yang berperan penting dalam proses pembekuan darah untuk menghentikan pendarahan. Jumlah trombosit sering menjadi perhatian pada pasien demam berdarah (DBD).",
+        },
+      ];
+
+      // Fungsi untuk menampilkan data ke HTML
+      function displayGlossary(data) {
+        const container = document.getElementById("glossary-list");
+        if (!container) return; // Hentikan jika elemen tidak ditemukan
+
+        let content = "";
+        data.forEach((item) => {
+          content += `
+          <div class="col-lg-4 col-md-6 claim-item my-2 p-2">
+              <div class="item" >
+                <div class="info" height="350px">
+                  
+                  <div class="content-body">
+                    <h4>${item.term}</h4>
+                    <p class="mb-3">${item.definition}</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+        `;
+        });
+
+        container.innerHTML = content;
+      }
+
+      // Panggil fungsi saat halaman dimuat
+      document.addEventListener("DOMContentLoaded", () => {
+        displayGlossary(glossaryData);
+      });
+    </script>
+    <!-- jQuery Frameworks
+    ============================================= -->
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/equal-height.min.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/modernizr.custom.13711.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/progress-bar.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/count-to.js"></script>
+    <script src="assets/js/YTPlayer.min.js"></script>
+    <script src="assets/js/circle-progress.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/bootsnav.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
