@@ -153,36 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // =======================================================
   // |         FUNGSI BARU UNTUK MENAMPILKAN ARTIKEL       |
   // =======================================================
-  function displayArticles() {
-    const articlesContainer = document.getElementById("articles-container");
-    if (!articlesContainer) return;
-
-    ARTICLES.forEach((article) => {
-      const cardHTML = `
-                    <div class="col-lg-4 col-md-6 article-item">
-                        <div class="item">
-                            <div class="thumb">
-                                <a href="${article.link}"><img src="https://via.placeholder.com/800x600.png/007BFF/FFFFFF?text=Artikel" alt="Thumb" /></a>
-                            </div>
-                            <div class="info">
-                                <div class="meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fas fa-book-open"></i> ${article.refs} Referensi
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h4>
-                                    <a href="${article.link}">${article.title}</a>
-                                </h4>
-                                <a class="btn btn-sm btn-outline-primary" href="${article.link}">Baca Selengkapnya <i class="fas fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    `;
-      articlesContainer.innerHTML += cardHTML;
-    });
-  }
 
   // Panggil semua fungsi untuk menampilkan data
   displayClaims();
@@ -213,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
         comments: 42,
         imageQuery: "Law_and_Justice",
         href: "/artikel",
-        img: "assets/img/logo-banner.png",
+        img: "/assets/img/logo-banner.png",
       },
       {
         title: "Cara Kerja FaktaSehat.Info dalam Melawan Hoaks",
@@ -223,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
         comments: 28,
         imageQuery: "Process_Workflow",
         href: "/artikel",
-        img: "assets/img/logo-banner.png",
+        img: "/assets/img/logo-banner.png",
       },
       {
         title:
@@ -234,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
         comments: 115,
         imageQuery: "Warning_Sign",
         href: "/artikel",
-        img: "assets/img/logo-banner-pepaya.png",
+        img: "/assets/img/logo-banner-pepaya.png",
       },
     ];
 
@@ -432,3 +402,155 @@ function restartQuiz() {
 
 // Init
 loadQuestion();
+
+document.addEventListener("DOMContentLoaded", function () {
+  // =======================================================
+  // |                  DATA SAMPEL (KLAIM)                |
+  // =======================================================
+  const CLAIMS = [
+    {
+      id: "rebusan-daun-pepaya-menyembuhkan-dbd",
+      title: "Rebusan Daun Pepaya Menyembuhkan DBD?",
+      status: "misleading",
+      topic: "Herbal",
+      date: "2025-09-01",
+      pop: 90,
+      summary:
+        "Beberapa riset kecil menunjukkan daun pepaya mungkin membantu menaikkan trombosit, tapi tidak membuktikan bisa menyembuhkan DBD. Pengobatan medis tetap wajib.",
+      reviewer: "Tim FaktaSehat + dr. Ni Wayan Ari Susanti",
+    },
+    {
+      id: "sirsak-menyembuhkan-kanker",
+      title: "Sirsak Menyembuhkan Kanker?",
+      status: "misleading",
+      topic: "Herbal",
+      date: "2025-09-01",
+      pop: 85,
+      summary:
+        "Belum ada uji klinis pada manusia yang membuktikan sirsak mampu mengobati kanker. Riset yang ada masih terbatas pada level sel atau hewan.",
+      reviewer: "Tim FaktaSehat & dr. Ni Wayan Ari Susanti",
+    },
+    {
+      id: "zymuno-menyembuhkan-kanker",
+      title: "Benarkah Zymuno bisa menyembuhkan kanker tanpa kemoterapi?",
+      status: "false",
+      topic: "Herbal",
+      date: "2025-09-01",
+      pop: 80,
+      summary:
+        "Tidak ada bukti ilmiah bahwa Zymuno (daun kelor, meniran, temulawak, madu) dapat menyembuhkan kanker. Klaim ini berbahaya dan menyesatkan.",
+      reviewer: "Tim FaktaSehat & dr. Ni Wayan Ari Susanti",
+    },
+    {
+      id: "air-es-membekukan-lemak",
+      title: "Air es membekukan lemak dan bikin susah langsing",
+      status: "false",
+      topic: "Gaya Hidup",
+      date: "2025-09-01",
+      pop: 75,
+      summary:
+        "Suhu tubuh akan menghangatkan air dingin. Lemak dicerna oleh empedu dan enzim, bukan dibekukan oleh suhu minuman.",
+      reviewer: "Tim FaktaSehat & dr.dr.Ni Nyoman Sri Okawati",
+    },
+    {
+      id: "tidur-di-lantai-menyebabkan-paru-paru-basah",
+      title: "Tidur di lantai bikin paru-paru basah dan berbahaya",
+      status: "false",
+      topic: "Gaya Hidup",
+      date: "2025-09-01",
+      pop: 70,
+      summary:
+        "“Paru-paru basah” adalah istilah awam untuk pneumonia atau edema paru, yang disebabkan oleh infeksi atau kondisi medis, bukan suhu lantai.",
+      reviewer: "Tim FaktaSehat & dr. ___, Sp.P",
+    },
+  ];
+
+  // =======================================================
+  // |       FUNGSI UNTUK MENAMPILKAN KLAIM (REVISI)       |
+  // =======================================================
+  function displayClaims(data) {
+    const claimsContainer = document.getElementById("claims-containerr");
+    if (!claimsContainer) return;
+
+    // Helper untuk status badge
+    function getStatusBadge(status) {
+      switch (status) {
+        case "false":
+          return { text: "Salah", color: "bg-danger text-white" };
+        case "misleading":
+          return { text: "Menyesatkan", color: "bg-warning text-dark" };
+        default:
+          return { text: "N/A", color: "bg-light text-dark" };
+      }
+    }
+    // Helper untuk format tanggal
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    }
+
+    // Bangun string HTML di dalam variabel untuk efisiensi
+    const allClaimsHTML = data
+      .map((claim) => {
+        const badge = getStatusBadge(claim.status);
+        const formattedDate = formatDate(claim.date);
+        return `
+        <div class="col-lg-4 col-md-6 claim-item my-2 p-2">
+            <div class="item">
+                <div class="info">
+                    <div class="meta">
+                        <ul>
+                            <li><span>${formattedDate}</span></li>
+                            <li><a href="#" class="badge ${badge.color} rounded-pill p-2">${badge.text}</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-body">
+                        <h4>${claim.title}</h4>
+                        <p class="mb-3">${claim.summary}</p>
+                        <div class="mini-title d-flex justify-content-between align-items-center">
+                            <p class="review-text mb-0">Review: <strong>${claim.reviewer}</strong></p>
+                            <p class="review-text mb-0">Popularitas: <span class="pop-score">${claim.pop}</span></p>
+                        </div>
+                    </div>
+                    <div class="mt-4" style="font-size:10px;">
+                    <a href="/cek-fakta/${claim.id}">
+                        <button style="font-size:10px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ulasanModal" data-claim-id="${claim.id}">Baca Ulasan</button></a>
+                        <a href="#" style="font-size:10px;" class="btn btn-outline-secondary">Ajukan Pertanyaan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      `;
+      })
+      .join(""); // Gabungkan semua HTML menjadi satu string
+
+    // Set innerHTML hanya satu kali setelah loop selesai
+    claimsContainer.innerHTML = allClaimsHTML;
+  }
+
+  // =======================================================
+  // |        PANGGIL FUNGSI & ATUR EVENT LISTENER         |
+  // =======================================================
+
+  // Panggil fungsi untuk menampilkan data klaim
+  displayClaims(CLAIMS);
+
+  // Event listener untuk modal (asumsi menggunakan Bootstrap 5)
+  const ulasanModal = document.getElementById("ulasanModal");
+  if (ulasanModal) {
+    ulasanModal.addEventListener("show.bs.modal", function (event) {
+      const button = event.relatedTarget;
+      const claimId = button.getAttribute("data-claim-id");
+      const claimData = CLAIMS.find((claim) => claim.id === claimId);
+
+      if (claimData) {
+        // Logika pengisian modal di sini
+        const modalTitle = ulasanModal.querySelector(".modal-title");
+        const modalBody = ulasanModal.querySelector(".modal-body");
+
+        modalTitle.textContent = claimData.title;
+        modalBody.innerHTML = `<p>${claimData.summary}</p><hr><small>Diperiksa oleh: <strong>${claimData.reviewer}</strong></small>`;
+      }
+    });
+  }
+});
