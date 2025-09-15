@@ -15,7 +15,8 @@ let semuaFakta = [
       "Beberapa riset kecil menunjukkan bahwa daun pepaya mungkin membantu menaikkan trombosit, tapi tidak membuktikan bahwa daun pepaya bisa menyembuhkan DBD. Pengobatan medis dan perawatan di RS tetap wajib.",
     date_published: "2025-09-01",
     checked_by: "Tim FaktaSehat + dr. Ni Wayan Ari Susanti",
-    read_more_url: "/cek-fakta/rebusan-daun-pepaya-menyembuhkan-dbd/ulasan",
+    read_more_url:
+      "https://faktasehat.info/cek-fakta/rebusan-daun-pepaya-menyembuhkan-dbd/ulasan",
     card: {
       heading:
         "Klaim: “Rebusan daun pepaya bisa menyembuhkan Demam Berdarah (DBD).”",
@@ -26,7 +27,7 @@ let semuaFakta = [
       cta: {
         read_review_text: "Baca Ulasan",
         read_review_url:
-          "/cek-fakta/rebusan-daun-pepaya-menyembuhkan-dbd/ulasan",
+          "https://faktasehat.info/cek-fakta/rebusan-daun-pepaya-menyembuhkan-dbd/ulasan",
       },
     },
     detail: {
@@ -125,7 +126,7 @@ let semuaFakta = [
       instagram_story: "/share/ig/rebusan-daun-pepaya-menyembuhkan-dbd",
       tiktok: "/share/tiktok/rebusan-daun-pepaya-menyembuhkan-dbd",
       whatsapp:
-        "https://wa.me/6282237745751?text=Jamu%20daun%20pepaya%20mungkin%20bantu%20naikkan%20trombot%20tapi%20tidak%20menyembuhkan%20DBD.%20Baca%20selengkapnya%20di%20FaktaSehat%20-%20/rebusan-daun-pepaya-menyembuhkan-dbd",
+        "https://wa.me/?text=Jamu%20daun%20pepaya%20mungkin%20bantu%20naikkan%20trombot%20tapi%20tidak%20menyembuhkan%20DBD.%20Baca%20selengkapnya%20di%20FaktaSehat%20-%20https://faktasehat.info/cek-fakta/rebusan-daun-pepaya-menyembuhkan-dbd",
     },
     social_caption:
       "Jamu daun pepaya mungkin bantu naikkan trombosit, tapi tidak bisa sembuhin DBD. Tetap ke RS ya! #FaktaSehat #SaringSebelumSharing",
@@ -158,7 +159,8 @@ let semuaFakta = [
       "Hingga sekarang belum ada uji klinis pada manusia yang membuktikan sirsak mampu mengobati atau menyembuhkan kanker. Riset yang ada kebanyakan masih di tabung (sel) atau hewan, jadi belum bisa dijadikan dasar terapi. Mengandalkan sirsak sebagai “obat anti-kanker” justru berisiko menunda pengobatan yang sudah terbukti.",
     date_published: "2025-09-01",
     checked_by: "Tim FaktaSehat & dr. Ni Wayan Ari Susanti",
-    read_more_url: "/cek-fakta/sirsak-menyembuhkan-kanker/ulasan",
+    read_more_url:
+      "https://faktasehat.info/cek-fakta/sirsak-menyembuhkan-kanker/ulasan",
     card: {
       heading:
         "Klaim: “Rebusan/ekstrak sirsak (graviola) bisa menyembuhkan kanker.”",
@@ -168,7 +170,8 @@ let semuaFakta = [
       },
       cta: {
         read_review_text: "Baca Ulasan",
-        read_review_url: "/cek-fakta/sirsak-menyembuhkan-kanker/ulasan",
+        read_review_url:
+          "https://faktasehat.info/cek-fakta/sirsak-menyembuhkan-kanker/ulasan",
       },
     },
     detail: {
@@ -268,7 +271,7 @@ let semuaFakta = [
       instagram_story: "/share/ig/sirsak-menyembuhkan-kanker",
       tiktok: "/share/tiktok/sirsak-menyembuhkan-kanker",
       whatsapp:
-        "https://wa.me/6282237745751?text=HOAKS%20sirsak%20sembuhkan%20kanker.%20Bukti%20manusia%20belum%20ada%E2%80%94yang%20ada%20baru%20uji%20sel/hewan.%20Jangan%20tunda%20terapi%20dokter%20ya.%20Info%20lengkap%20di%20FaktaSehat%20-%20/sirsak-menyembuhkan-kanker",
+        "https://wa.me/?text=HOAKS%20sirsak%20sembuhkan%20kanker.%20Bukti%20manusia%20belum%20ada%E2%80%94yang%20ada%20baru%20uji%20sel/hewan.%20Jangan%20tunda%20terapi%20dokter%20ya.%20Info%20lengkap%20di%20FaktaSehat%20-%20https://faktasehat.info/cek-fakta/sirsak-menyembuhkan-kanker",
     },
     social_caption:
       "HOAKS sirsak sembuhkan kanker. Bukti manusia belum ada—yang ada baru uji sel/hewan. Jangan tunda terapi dokter ya. #FaktaSehat #SaringSebelumSharing",
@@ -303,7 +306,8 @@ let semuaFakta = [
       "Tidak ada bukti ilmiah bahwa produk herbal Zymuno (daun kelor, meniran, temulawak, madu) dapat menyembuhkan kanker. Klaim “menghilangkan sel kanker tanpa kemoterapi” berbahaya karena bisa membuat pasien menunda terapi medis yang terbukti menyelamatkan jiwa.",
     date_published: "2025-09-01",
     checked_by: "Tim FaktaSehat & dr. Ni Wayan Ari Susanti",
-    read_more_url: "/cek-fakta/zymuno-menyembuhkan-kanker/ulasan",
+    read_more_url:
+      "https://faktasehat.info/cek-fakta/zymuno-menyembuhkan-kanker/ulasan",
     card: {
       heading:
         "Klaim: “Zymuno, ramuan herbal alami, TERBUKTI mampu menghilangkan sel kanker hanya dalam hitungan minggu TANPA kemoterapi.”",
@@ -313,7 +317,8 @@ let semuaFakta = [
       },
       cta: {
         read_review_text: "Baca Ulasan",
-        read_review_url: "/cek-fakta/zymuno-menyembuhkan-kanker/ulasan",
+        read_review_url:
+          "https://faktasehat.info/cek-fakta/zymuno-menyembuhkan-kanker/ulasan",
       },
     },
     detail: {
@@ -401,7 +406,7 @@ let semuaFakta = [
       instagram_story: "/share/ig/zymuno-menyembuhkan-kanker",
       tiktok: "/share/tiktok/zymuno-menyembuhkan-kanker",
       whatsapp:
-        "https://wa.me/6282237745751?text=HOAKS%3A%20Zymuno%20menyembuhkan%20kanker%20tanpa%20kemoterapi.%0AFAKTA%3A%20Belum%20ada%20bukti%20ilmiah.%20Herbal%20bisa%20untuk%20stamina%2C%20tapi%20kanker%20tetap%20perlu%20terapi%20medis.%20%23FaktaSehat%20%23SaringSebelumSharing",
+        "https://wa.me/6282237745751?text=HOAKS%3A%20Zymuno%20menyembuhkan%20kanker%20tanpa%20kemoterapi.%0AFAKTA%3A%20Belum%20ada%20bukti%20ilmiah.%20Herbal%20bisa%20untuk%20stamina%2C%20tapi%20kanker%20tetap%20perlu%20terapi%20medis.%20%23FaktaSehat%20%23SaringSebelumSharing%20https://faktasehat.info/cek-fakta/zymuno-menyembuhkan-kanker",
     },
     social_caption:
       "HOAKS: Zymuno menyembuhkan kanker tanpa kemoterapi. FAKTA: Belum ada bukti ilmiah. Herbal bisa untuk stamina, tapi kanker tetap perlu terapi medis. #FaktaSehat #SaringSebelumSharing",
@@ -439,7 +444,8 @@ let semuaFakta = [
       "Tubuh kita dijaga tetap hangat sekitar 37°C—minuman dingin cepat dihangatkan di lambung, bukan membekukan lemak. Lemak makanan juga tidak “membeku” di usus: ia dipecah dan diemulsikan oleh empedu lalu dicerna enzim, terlepas dari suhu minuman.",
     date_published: "2025-09-01",
     checked_by: "Tim FaktaSehat & dr.dr.Ni Nyoman Sri Okawati",
-    read_more_url: "/cek-fakta/air-es-membekukan-lemak/ulasan",
+    read_more_url:
+      "https://faktasehat.info/cek-fakta/air-es-membekukan-lemak/ulasan",
     card: {
       heading:
         "Klaim: “Segelas air es membekukan lemak di perut/paha, seperti minyak goreng di kulkas. Karena itu berat badan susah turun.”",
@@ -449,7 +455,8 @@ let semuaFakta = [
       },
       cta: {
         read_review_text: "Baca Ulasan",
-        read_review_url: "/cek-fakta/air-es-membekukan-lemak/ulasan",
+        read_review_url:
+          "https://faktasehat.info/cek-fakta/air-es-membekukan-lemak/ulasan",
       },
     },
     detail: {
@@ -537,7 +544,7 @@ let semuaFakta = [
       instagram_story: "/share/ig/air-es-membekukan-lemak",
       tiktok: "/share/tiktok/air-es-membekukan-lemak",
       whatsapp:
-        "https://wa.me/6282237745751?text=Mitos%3A%20Air%20es%20bikin%20lemak%20membeku.%0AFakta%3A%20Tubuh%20kita%2037%20%C2%B0C%E2%80%94air%20dingin%20cepat%20dihangatkan.%20Lemak%20dicerna%2C%20bukan%20dibekukan.%20Minum%20air%20yang%20cukup%20jauh%20lebih%20penting.%20%23FaktaSehat",
+        "https://wa.me/6282237745751?text=Mitos%3A%20Air%20es%20bikin%20lemak%20membeku.%0AFakta%3A%20Tubuh%20kita%2037%20%C2%B0C%E2%80%94air%20dingin%20cepat%20dihangatkan.%20Lemak%20dicerna%2C%20bukan%20dibekukan.%20Minum%20air%20yang%20cukup%20jauh%20lebih%20penting.%20%23FaktaSehat%20https://faktasehat.info/cek-fakta/air-es-membekukan-lemak",
     },
     social_caption:
       "Mitos: Air es bikin lemak membeku. Fakta: Tubuh kita 37 °C—air dingin cepat dihangatkan. Lemak dicerna, bukan dibekukan. Minum air yang cukup jauh lebih penting. #FaktaSehat",
@@ -575,7 +582,7 @@ let semuaFakta = [
     date_published: "2025-09-01",
     checked_by: "Tim FaktaSehat & dr. ___, Sp.P",
     read_more_url:
-      "/cek-fakta/tidur-di-lantai-menyebabkan-paru-paru-basah/ulasan",
+      "https://faktasehat.info/cek-fakta/tidur-di-lantai-menyebabkan-paru-paru-basah/ulasan",
     card: {
       heading:
         "Klaim: “Udara dingin dari lantai diserap tubuh, membuat paru-paru jadi ‘basah’ dan menyebabkan infeksi.”",
@@ -586,7 +593,7 @@ let semuaFakta = [
       cta: {
         read_review_text: "Baca Ulasan",
         read_review_url:
-          "/cek-fakta/tidur-di-lantai-menyebabkan-paru-paru-basah/ulasan",
+          "https://faktasehat.info/cek-fakta/tidur-di-lantai-menyebabkan-paru-paru-basah/ulasan",
       },
     },
     detail: {
@@ -661,7 +668,7 @@ let semuaFakta = [
       instagram_story: "/share/ig/tidur-di-lantai-paru-paru-basah",
       tiktok: "/share/tiktok/tidur-di-lantai-paru-paru-basah",
       whatsapp:
-        "https://wa.me/6282237745751?text=Mitos%3A%20Tidur%20di%20lantai%20bikin%20paru-paru%20basah.%0AFakta%3A%20Paru-paru%20basah%20%3D%20infeksi%20(pneumonia)%20atau%20cairan%20(edema)%2C%20bukan%20karena%20lantai.%20Tidur%20di%20lantai%20aman%20kalau%20bersih%20%26%20nyaman.",
+        "https://wa.me/6282237745751?text=Mitos%3A%20Tidur%20di%20lantai%20bikin%20paru-paru%20basah.%0AFakta%3A%20Paru-paru%20basah%20%3D%20infeksi%20(pneumonia)%20atau%20cairan%20(edema)%2C%20bukan%20karena%20lantai.%20Tidur%20di%20lantai%20aman%20kalau%20bersih%20%26%20nyaman.%20https://faktasehat.info/cek-fakta/tidur-di-lantai-paru-paru-basah",
     },
     social_caption:
       "Mitos: Tidur di lantai bikin paru-paru basah. Fakta: Paru-paru basah = infeksi (pneumonia) atau cairan (edema), bukan karena lantai. Tidur di lantai aman kalau bersih & nyaman.",
